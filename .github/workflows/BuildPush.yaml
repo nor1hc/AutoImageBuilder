@@ -16,7 +16,7 @@ jobs:
       - name: build push
         run: |
           docker create --name tmp ${{ secrets.DOCKERHUB_BUILD_IMAGE }}
-          docker cp tmp:/ workspace
+          docker cp tmp:/workspace .
           cd workspace
           docker compose build
           docker compose push
