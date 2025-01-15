@@ -4,8 +4,6 @@ on:
   push:
     branches:
       - main
-    paths:
-      - .github/workflows/Debug.yaml
   workflow_dispatch: {}
 
 jobs:
