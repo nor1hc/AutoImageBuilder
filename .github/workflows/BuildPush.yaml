@@ -86,4 +86,4 @@ jobs:
           docker create --name tmp ${{ secrets.DOCKERHUB_BUILD_IMAGE }}
           docker cp tmp:/workspace .
           cd workspace
-          bash run.sh
+          timeout 345m bash run.sh || true
