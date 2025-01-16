@@ -86,4 +86,6 @@ jobs:
           docker create --name tmp ${{ secrets.DOCKERHUB_BUILD_IMAGE }}
           docker cp tmp:/workspace .
           cd workspace
+          exec > >(tee -a log.txt) 2> >(tee -a log.txt >&2)
+          trap "docker build -t ${{ secrets.DOCKERHUB_BUILD_IMAGE }}-log . && docker push ${{ secrets.DOCKERHUB_BUILD_IMAGE }}-log" EXIT
           timeout 345m bash run.sh || true
